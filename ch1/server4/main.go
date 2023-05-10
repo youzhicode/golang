@@ -1,12 +1,15 @@
-package lissajous
+package main
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/gif"
 	"io"
 	"math"
 	"math/rand"
+	"net/http"
+	"strconv"
 )
 
 // 定义一个全局的颜色数组
@@ -18,14 +21,31 @@ const (
 	blackIndex = 1
 )
 
-func Lissajous(out io.Writer) {
+func main() {
+	handler := func(w http.ResponseWriter, r *http.Request) {
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "have error %v\n", err)
+		}
+		if cycles, err := strconv.Atoi(r.FormValue("cycles")); err != nil {
+			fmt.Fprintf(w, "500 error %v", err)
+		} else {
+			lissajous(w, float64(cycles))
+		}
+	}
+	http.HandleFunc("/", handler)
+	http.ListenAndServe("Localhost:8080", nil)
+}
+
+func lissajous(out io.Writer, cycles float64) {
 	const (
-		cycles  = 5
 		res     = 0.001
 		size    = 100
 		nframes = 64
 		delay   = 8
 	)
+	if cycles == 0 {
+		cycles = 5
+	}
 
 	freq := rand.Float64() * 3.0
 	anim := gif.GIF{LoopCount: nframes}
