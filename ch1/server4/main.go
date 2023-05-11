@@ -2,23 +2,9 @@ package main
 
 import (
 	"fmt"
-	"image"
-	"image/color"
-	"image/gif"
-	"io"
-	"math"
-	"math/rand"
 	"net/http"
-	"strconv"
-)
 
-// 定义一个全局的颜色数组
-var palette = []color.Color{color.White, color.Black}
-
-// 定义两个全局的常量
-const (
-	whiteIndex = 0
-	blackIndex = 1
+	"github.com/youzhicode/golang/ch1/lissajous/lissajous"
 )
 
 func main() {
@@ -26,17 +12,18 @@ func main() {
 		if err := r.ParseForm(); err != nil {
 			fmt.Fprintf(w, "have error %v\n", err)
 		}
-		if cycles, err := strconv.Atoi(r.FormValue("cycles")); err != nil {
+		lissajous.Lissajous(w)
+		/*if cycles, err := strconv.Atoi(r.FormValue("cycles")); err != nil {
 			fmt.Fprintf(w, "500 error %v", err)
 		} else {
-			lissajous(w, float64(cycles))
-		}
+			//lissajous(w, float64(cycles))
+		}*/
 	}
 	http.HandleFunc("/", handler)
 	http.ListenAndServe("Localhost:8080", nil)
 }
 
-func lissajous(out io.Writer, cycles float64) {
+/*func lissajous(out io.Writer, cycles float64) {
 	const (
 		res     = 0.001
 		size    = 100
@@ -63,4 +50,4 @@ func lissajous(out io.Writer, cycles float64) {
 		anim.Image = append(anim.Image, img)
 	}
 	gif.EncodeAll(out, &anim)
-}
+}*/
