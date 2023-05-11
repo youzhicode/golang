@@ -1,2 +1,4 @@
 github.com/youzhicode/golang/ch2/tempconv v0.0.0-20230511022545-2b77123af85d h1:aCyDAdwVNhAIWiOY0gQPJWDLOpe3rj9fD+HX00/m3O0=
 github.com/youzhicode/golang/ch2/tempconv v0.0.0-20230511022545-2b77123af85d/go.mod h1:X9sDYlwSjQR+onu2V9B7wBkoD6BzDmREvcekEwQZr/A=
+github.com/youzhicode/golang/ch2/tempconv v0.0.0-20230511030028-3d1df8f8d49d h1:JGcFMS/u5jNO5t3R5vt3300yG33BgLA1sYNibhHo5zw=
+github.com/youzhicode/golang/ch2/tempconv v0.0.0-20230511030028-3d1df8f8d49d/go.mod h1:X9sDYlwSjQR+onu2V9B7wBkoD6BzDmREvcekEwQZr/A=
